@@ -55,21 +55,21 @@ function validateCategoryForm(){
 		
 	}
 	
-	//Price
+	//Description
 	if($("#categoryDesc").val().trim() == ""){
-		
+	
 		return "Insert Category Description";
 	
 	}
 	
-	
+	//TagID
 	if($("#tagCode").val().trim() == ""){
 		
 		return "Insert Tag Code";
 		
 	}
 	
-	
+	//TagName
 	if($("#tagName").val().trim() == ""){
 		
 		return "Insert Tag Name";
@@ -127,7 +127,7 @@ function onCategorySaveComplete(response,status)
 
 
 }
-
+//UpdateContoller
 $(document).on("click",".btnUpdate",function(event)
 {
 	$("#hidIDSave").val($(this).data("Id"));
@@ -140,6 +140,7 @@ $(document).on("click",".btnUpdate",function(event)
 
 });
 
+//DeleteController
 $(document).on("click",".btnRemove",function(event)
 {
 	
@@ -162,27 +163,28 @@ $(document).on("click",".btnRemove",function(event)
 
 function onCategoryDeleteComplete(response, status)
 { 
-if (status == "success") 
- { 
- var resultSet = JSON.parse(response); 
- if (resultSet.status.trim() == "success") 
- { 
- $("#alertSuccess").text("Successfully deleted."); 
- $("#alertSuccess").show(); 
- $("#divCategoryGrid").html(resultSet.data); 
- } else if (resultSet.status.trim() == "error") 
- { 
- $("#alertError").text(resultSet.data); 
- $("#alertError").show(); 
- } 
- } else if (status == "error") 
- { 
- $("#alertError").text("Error while deleting."); 
- $("#alertError").show(); 
- } else
- { 
- $("#alertError").text("Unknown error while deleting.."); 
- $("#alertError").show();
+	if (status == "success") 
+ 	{ 
+ 		var resultSet = JSON.parse(response); 
+ 
+	if (resultSet.status.trim() == "success") 
+ 	{ 
+ 		$("#alertSuccess").text("Successfully deleted."); 
+ 		$("#alertSuccess").show(); 
+ 		$("#divCategoryGrid").html(resultSet.data); 
+ 	} else if (resultSet.status.trim() == "error") 
+ 		{ 
+ 			$("#alertError").text(resultSet.data); 
+ 			$("#alertError").show(); 
+ 		} 
+ 	} else if (status == "error") 
+ 	{ 
+ 		$("#alertError").text("Error while deleting."); 
+ 		$("#alertError").show(); 
+ 	} else
+ 	{ 
+ 		$("#alertError").text("Unknown error while deleting.."); 
+ 		$("#alertError").show();
 		
 		
  }
